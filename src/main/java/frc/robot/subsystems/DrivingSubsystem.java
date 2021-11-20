@@ -29,7 +29,7 @@ public class DrivingSubsystem extends SubsystemBase {
   public WPI_TalonSRX leftEncoder = new WPI_TalonSRX(Constants.leftEncoder);
   public WPI_TalonSRX rightEncoder = new WPI_TalonSRX(Constants.rightEncoder);
   
-  DifferentialDrive differentialDrive = new DifferentialDrive(leftgroup, rightgroup);
+  public DifferentialDrive differentialDrive = new DifferentialDrive(leftgroup, rightgroup);
   
   public AHRS ahrs;
   

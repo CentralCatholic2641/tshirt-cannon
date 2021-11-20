@@ -4,13 +4,12 @@
 
 package frc.robot;
 
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.DrivingCommand;
 import frc.robot.subsystems.DrivingSubsystem;
+import frc.robot.subsystems.PneumaticSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,8 +22,12 @@ public class Robot extends TimedRobot {
   Command autoCommand;
 
   public static RobotContainer robotContainer;
+
   public static DrivingSubsystem drivingSubsystem = new DrivingSubsystem();
+  public static PneumaticSubsystem pneumaticSubsystem = new PneumaticSubsystem();
+  
   public static DrivingCommand drivingCommand = new DrivingCommand();
+  
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -88,9 +91,7 @@ public class Robot extends TimedRobot {
     // if (m_autonomousCommand != null) {
     // m_autonomousCommand.cancel();
     // }
-    if (autoCommand != null)
-      autoCommand.cancel();
-
+    if (autoCommand != null) autoCommand.cancel();
   }
 
   /** This function is called periodically during operator control. */

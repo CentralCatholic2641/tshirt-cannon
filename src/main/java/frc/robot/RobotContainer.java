@@ -6,7 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.ShooterCommand;
+import frc.robot.commands.ChargeCommand;
+import frc.robot.commands.FireCommand;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -19,9 +20,8 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public Joystick gamepad1 = new Joystick(Constants.gamepad2);
 
-  public JoystickButton allButton = new JoystickButton(gamepad1, Constants.oneButton);
-  public JoystickButton beltAndShooterButton = new JoystickButton(gamepad1, Constants.threeButton);
-  public JoystickButton beltAndIntakeButton = new JoystickButton(gamepad1, Constants.fourButton);
+  public JoystickButton trigger = new JoystickButton(gamepad1, Constants.oneButton);
+  public JoystickButton twoButton = new JoystickButton(gamepad1, Constants.twoButton);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -38,9 +38,8 @@ public class RobotContainer {
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    beltAndIntakeButton.whileHeld(new ShooterCommand(1), true);
-    beltAndShooterButton.whileHeld(new ShooterCommand(2), true);
-    allButton.whileHeld(new ShooterCommand(3), true);
+    trigger.whileHeld(new FireCommand());
+    twoButton.whileHeld(new ChargeCommand());
   }
 
   /**
