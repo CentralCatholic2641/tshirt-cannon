@@ -2,12 +2,12 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot;
+package frc.team2641.tshirtcannon;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.ChargeCommand;
-import frc.robot.commands.FireCommand;
+import frc.team2641.tshirtcannon.commands.ChargeCommand;
+import frc.team2641.tshirtcannon.commands.FireCommand;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -18,10 +18,10 @@ import frc.robot.commands.FireCommand;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  public Joystick gamepad1 = new Joystick(Constants.gamepad2);
+  public Joystick gamepad1 = new Joystick(Constants.gamepad1);
 
-  public JoystickButton trigger = new JoystickButton(gamepad1, Constants.oneButton);
-  public JoystickButton twoButton = new JoystickButton(gamepad1, Constants.twoButton);
+  public JoystickButton pressure = new JoystickButton(gamepad1, Constants.bButton);
+  public JoystickButton fire = new JoystickButton(gamepad1, Constants.aButton);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -38,8 +38,8 @@ public class RobotContainer {
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    trigger.whileHeld(new FireCommand());
-    twoButton.whileHeld(new ChargeCommand());
+    pressure.whileTrue(new ChargeCommand());
+    fire.whileTrue(new FireCommand());
   }
 
   /**

@@ -2,23 +2,24 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.subsystems;
+package frc.team2641.tshirtcannon.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 
 public class PneumaticSubsystem extends SubsystemBase {
 
-  public Compressor compressor = new Compressor();
-  public Solenoid solenoid = new Solenoid(0, 3);
+  public Compressor compressor = new Compressor(21, PneumaticsModuleType.CTREPCM);
+  public Solenoid solenoid = new Solenoid(21, PneumaticsModuleType.CTREPCM, 3);
   
   public void charge() {
-    compressor.start();
+    compressor.enableDigital();
   }
 
   public void stop() {
-    compressor.stop();
+    compressor.disable();
   }
   
   public void fire() {
@@ -31,7 +32,7 @@ public class PneumaticSubsystem extends SubsystemBase {
   
   /** Creates a new PneumaticSubsystem. */
   public PneumaticSubsystem() {
-    compressor.stop();
+    stop();
   }
 
   @Override
